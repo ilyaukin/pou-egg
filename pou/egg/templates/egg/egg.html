@@ -1,0 +1,18 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'egg/style.css' %}"/>
+<script type="text/javascript" src="{% static 'jquery-2.1.1.min.js' %}"></script>
+<script type="text/javascript">
+    function hit() {
+        $.get("{% url 'hit' e.id %}",
+            function(data) {
+                $("#score").html(data['score'])
+            },
+            "json"
+        )
+    }
+</script>
+<body background="{% static 'egg/ehappy.png' %}" onclick="hit()">
+<div align="center">
+    <div id="score" style="font-family: Verdana; font-size: 20; color: #000;">{{e.score}}</div>
+</div>
+</body>
